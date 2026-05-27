@@ -1,11 +1,12 @@
-let india = "https://api.open-meteo.com/v1/forecast?latitude=22&longitude=79&daily=sunrise,sunset,weather_code&hourly=temperature_2m,rain,wind_speed_10m,weather_code&current=temperature_2m,is_day,rain,wind_speed_10m,weather_code&timezone=auto"
+let india = "https://api.open-meteo.com/v1/forecast?latitude=22&longitude=79&daily=temperature_2m_max,sunrise,sunset,weather_code&hourly=temperature_2m,rain,wind_speed_10m,weather_code&current=temperature_2m,is_day,rain,wind_speed_10m,weather_code&timezone=auto"
 let temp = document.querySelector(".temp");
 let unit = document.querySelector(".unit");
 let time = document.querySelector(".time");
 let dayNight = document.querySelector(".dayNight");
-let weatherCode = document.querySelector(".weather")
+let weatherCode = document.querySelector(".weather");
+let dailytemperature = document.querySelectorAll(".daily");
 
-async function getData() {
+async function currentData() {
     let response = await fetch(india);
     let data = await response.json();
     let current = data.current;
@@ -21,6 +22,18 @@ async function getData() {
     }
     console.log(data);
     weather_code()
+}
+
+async function dailyData(){
+    let response = await fetch(india);
+    let data = await response.json();
+    let daily = data.daily;
+    let dailyTemp = daily.temperature_2m_max;
+    dailyTemp.forEach((temperature, i) => {
+        if(dailytemperature[i]){
+        dailytemperature[i].innerText = temperature;
+        }
+    });
 }
 
 async function weather_code() {
