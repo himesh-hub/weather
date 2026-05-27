@@ -2,7 +2,6 @@ let india = "https://api.open-meteo.com/v1/forecast?latitude=22&longitude=79&dai
 let temp = document.querySelector(".temp");
 let unit = document.querySelector(".unit");
 let time = document.querySelector(".time");
-let rain = document.querySelector(".rain");
 let dayNight = document.querySelector(".dayNight");
 let weatherCode = document.querySelector(".weather")
 
@@ -15,7 +14,6 @@ async function getData() {
     temp.innerText = currTemp;
     unit.innerText = data.current_units.temperature_2m;
     time.innerText = current.time;
-    rain.innerText = current.rain;
     if(current.is_day === 1){
         dayNight.innerText = "Day";
     }else{
