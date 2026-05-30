@@ -5,6 +5,7 @@ let time = document.querySelector(".time");
 let dayNight = document.querySelector(".dayNight");
 let weatherCode = document.querySelector(".weather");
 let dailytemperature = document.querySelectorAll(".daily");
+let hourlytemperature = document.querySelector(".hourly");
 
 async function currentData() {
     let response = await fetch(india);
@@ -21,7 +22,7 @@ async function currentData() {
         dayNight.innerText = "Night";
     }
     console.log(data);
-    weather_code()
+    weather_code();
 }
 
 async function dailyData(){
@@ -33,6 +34,20 @@ async function dailyData(){
         if(dailytemperature[i]){
         dailytemperature[i].innerText = temperature;
         }
+    });
+}
+
+async function hourlyData() {
+    let response = await fetch(india);
+    let data = await response.json();
+    let hourly = data.hourly;
+    console.log(hourly)
+    let hourlyTemp = hourly.temperature_2m;
+    hourlyTemp.slice(0, 23).forEach(item => {
+        let newDiv = document.createElement('div');
+        newDiv.classList.add('hour');
+        newDiv.innerText = item;
+        hourlytemperature.appendChild(newDiv);
     });
 }
 
