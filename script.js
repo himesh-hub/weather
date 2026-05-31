@@ -29,26 +29,40 @@ async function dailyData(){
     let response = await fetch(india);
     let data = await response.json();
     let daily = data.daily;
+    let hourly = data.hourly;
     let dailyTemp = daily.temperature_2m_max;
+    let hourlyTemp = hourly.temperature_2m;
     dailyTemp.forEach((temperature, i) => {
+        // console.log(hourlyTemp.slice(0, 24));
         if(dailytemperature[i]){
-        dailytemperature[i].innerText = temperature;
+        dailytemperature[i].innerText = temperature +  hourlyTemp.splice(0, 24);
         }
     });
+    console.log(dailyTemp);
+    // hourlyData()
+    // dailyTemp[0] = hourlyTemp.slice(0, 24);
+    // console.log(dailyTemp[0]);
 }
 
 async function hourlyData() {
     let response = await fetch(india);
     let data = await response.json();
     let hourly = data.hourly;
-    console.log(hourly)
     let hourlyTemp = hourly.temperature_2m;
-    hourlyTemp.slice(0, 23).forEach(item => {
-        let newDiv = document.createElement('div');
-        newDiv.classList.add('hour');
-        newDiv.innerText = item;
-        hourlytemperature.appendChild(newDiv);
-    });
+    console.log(hourlyTemp);
+    // let hourlyTime = hourly.time;
+    // hourlyTime.slice(0, 24).forEach(t => {
+    //     let time = document.createElement('div');
+    //     time.classList.add('time');
+    //     time.innerText = t;
+    //     hourlytemperature.appendChild(time);
+    // });
+    // hourlyTemp.forEach(item => {
+    //     let hour = document.createElement('div');
+    //     hour.classList.add('hour');
+    //     hour.innerText = item;
+    //     hourlytemperature.appendChild(hour);
+    // });
 }
 
 async function weather_code() {
