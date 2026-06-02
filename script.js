@@ -4,8 +4,7 @@ let unit = document.querySelector(".unit");
 let time = document.querySelector(".time");
 let dayNight = document.querySelector(".dayNight");
 let weatherCode = document.querySelector(".weather");
-let dailytemperature = document.querySelectorAll(".daily");
-let hourlytemperature = document.querySelector(".hourly");
+let dailytemperature = document.querySelectorAll(".daily-hour");
 
 async function currentData() {
     let response = await fetch(india);
@@ -29,19 +28,14 @@ async function dailyData(){
     let response = await fetch(india);
     let data = await response.json();
     let daily = data.daily;
-    let hourly = data.hourly;
     let dailyTemp = daily.temperature_2m_max;
-    let hourlyTemp = hourly.temperature_2m;
     dailyTemp.forEach((temperature, i) => {
-        // console.log(hourlyTemp.slice(0, 24));
         if(dailytemperature[i]){
-        dailytemperature[i].innerText = temperature +  hourlyTemp.splice(0, 24);
+        dailytemperature[i].innerText = temperature;
         }
     });
     console.log(dailyTemp);
-    // hourlyData()
-    // dailyTemp[0] = hourlyTemp.slice(0, 24);
-    // console.log(dailyTemp[0]);
+    hourlyData()
 }
 
 async function hourlyData() {
@@ -49,20 +43,30 @@ async function hourlyData() {
     let data = await response.json();
     let hourly = data.hourly;
     let hourlyTemp = hourly.temperature_2m;
-    console.log(hourlyTemp);
-    // let hourlyTime = hourly.time;
+    let hourlyTime = hourly.time;
+    updatedHourlyTime = hourlyTime.map(str => str.replaceAll('T', " "));
     // hourlyTime.slice(0, 24).forEach(t => {
     //     let time = document.createElement('div');
     //     time.classList.add('time');
     //     time.innerText = t;
     //     hourlytemperature.appendChild(time);
     // });
-    // hourlyTemp.forEach(item => {
-    //     let hour = document.createElement('div');
-    //     hour.classList.add('hour');
-    //     hour.innerText = item;
-    //     hourlytemperature.appendChild(hour);
-    // });
+    dailytemperature.forEach((temperature, i) => {
+        const hourChunk = hourlyTemp.slice(i * 24, (i * 24) + 24);
+        const timeChunk = updatedHourlyTime.slice(i * 24,(i * 24) + 24);
+        hourChunk.forEach(item => {
+        let hour = document.createElement('div');
+        hour.classList.add('hour');
+        hour.innerText = item;
+        temperature.append(hour);
+        });
+        timeChunk.forEach(item => {
+        let time = document.createElement('div');
+        time.classList.add('time');
+        time.innerText = item;
+        temperature.append(time);
+        });
+    });
 }
 
 async function weather_code() {
