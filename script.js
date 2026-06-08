@@ -7,6 +7,7 @@ let weatherCode = document.querySelector(".weather");
 let dailytemperature = document.querySelectorAll(".daily-hour");
 
 currentData()
+dailyData()
 
 async function currentData() {
     let response = await fetch(india);
@@ -64,11 +65,19 @@ async function hourlyData() {
         });
         timeChunk.forEach(item => {
         let time = document.createElement('div');
-        time.classList.add('time');
+        time.classList.add('time-H');
         time.innerText = item;
         temperature.append(time);
         });
     });
+    let hideTemp = document.querySelectorAll('.hour');
+    hideTemp.forEach(i =>{
+        i.style.display = 'none';
+    });
+    let hideTime = document.querySelectorAll('.time-H');
+    hideTime.forEach(i =>{
+        i.style.display = 'none';
+    })
 }
 
 async function weather_code() {
