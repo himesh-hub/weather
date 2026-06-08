@@ -6,6 +6,8 @@ let dayNight = document.querySelector(".dayNight");
 let weatherCode = document.querySelector(".weather");
 let dailytemperature = document.querySelectorAll(".daily-hour");
 
+currentData()
+
 async function currentData() {
     let response = await fetch(india);
     let data = await response.json();

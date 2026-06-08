@@ -1,28 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather</title>
     <link rel="stylesheet" href="src/output.css">
 </head>
-<body>
-    <main>
-        <h1 class="">Weather</h1>
-        <div class="temp"></div>
-        <div class="unit"></div>
-        <div class="time"></div>
-        <div class="dayNight"></div>
-        <div class="weather"></div>
-        <div class="daily-hour"></div>
-        <div class="daily-hour"></div>
-        <div class="daily-hour"></div>
-        <div class="daily-hour"></div>
-        <div class="daily-hour"></div>
-        <div class="daily-hour"></div>
-        <div class="daily-hour"></div>
-    </main>
 
+<body>
+    <div class="daily-hour"></div>
+    <div class="daily-hour"></div>
+    <div class="daily-hour"></div>
+    <div class="daily-hour"></div>
+    <div class="daily-hour"></div>
+    <div class="daily-hour"></div>
+    <div class="daily-hour"></div>
+    </div>
+    <header class="h-14 w-full bg-amber-800 flex justify-between items-center">
+        <p class="font-bold">DAILYweather</p>
+        <ul class="flex w-3/12 justify-around">
+            <li>Home</li>
+            <li>Contact us</li>
+            <li>About</li>
+        </ul>
+    </header>
+    <div class="h-222 w-screen bg-amber-950">
+        <div class="left w-[50%] h-full bg-red-900">
+            <div class="bg-red-900 h-50 w-80 relative left-[5%] top-[10%]">
+                <div class="weather text-amber-50 font-bold text-5xl"></div>
+                <div class="dayNight text-amber-50 font-bold"></div>
+                <div class="time text-amber-50 font-bold text-2x1"></div>
+            </div>
+            <div class="h-50 w-80 flex bg-red-900 relative left-[5%] top-[50%]">
+                <div class="temp text-amber-50 text-9xl font-bold self-center"></div>
+                <div class="unit text-amber-50 relative top-30 text-3xl"></div>
+            </div>
+        </div>
+    </div>
+    <footer>
+
+    </footer>
     <script src="script.js"></script>
 </body>
+
 </html>
