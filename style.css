@@ -1,0 +1,9 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.hi{
+    background-image: url("assets/clear.jpg");
+    /* background-size: cover; */
+}
