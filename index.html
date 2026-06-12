@@ -9,30 +9,30 @@
     <link rel="stylesheet" href="src/output.css">
 </head>
 
-<body>
+<body class="overflow-x-hidden">
 
-    <div class="hi bg-cover bg-center bg-no-repeat min-h-screen w-full">
+    <div class="hi bg-cover bg-center bg-no-repeat min-h-screen w-full overflow-hidden">
         <header class="h-14 w-full flex justify-between items-center">
-            <p class="font-bold">DAILYweather</p>
-            <ul class="flex w-3/12 justify-around">
-                <li>Home</li>
-                <li>Contact us</li>
-                <li>About</li>
+            <p class="font-bold m-5 text-white underline">DAILYweather</p>
+            <ul class="flex w-3/12 justify-around text-white">
+                <li class="border p-2 rounded-2xl backdrop-blur-md border-white/30 shadow-[0px_4px_32px_0px_#1f268766]">Home</li>
+                <li class="border p-2 rounded-2xl backdrop-blur-md border-white/30 shadow-[0px_4px_32px_0px_#1f268766]">Contact us</li>
+                <li class="border p-2 rounded-2xl backdrop-blur-md border-white/30 shadow-[0px_4px_32px_0px_#1f268766]">About</li>
             </ul>
         </header>
-        <div class="h-222 w-screen flex">
-            <div class="left w-[50%] h-full">
-                <div class="h-50 w-80 relative left-[15%] top-[10%]">
-                    <div class="weather text-amber-50 font-bold text-5xl">Cloudy</div>
+        <div class="h-full w-full flex">
+            <div class="left w-[50%] h-screen ">
+                <div class="h-50 w-80 relative left-[15%] top-[10%] bg-white/15 backdrop-blur-md border border-white/20 shadow-[0px_8px_32px_0px_#1f268766] rounded-2xl p-6">
+                    <div class="weather text-amber-50 font-bold text-5xl ">Cloudy</div>
                     <div class="dayNight text-amber-50 font-bold">Day</div>
                     <div class="time text-amber-50 font-bold text-2x1">Sunday,06 12:00</div>
                 </div>
-                <div class="h-50 w-80 flex relative left-[15%] top-[50%]">
+                <div class="h-50 w-80 flex relative left-[15%] top-[50%] bg-white/15 border border-white/20 backdrop-blur-md shadow-[0px_8px_32px_0px_#1f268766] rounded-2xl p-6">
                     <div class="temp text-amber-50 text-9xl font-bold self-center">36</div>
-                    <div class="unit text-amber-50 relative top-30 text-3xl">c</div>
+                    <div class="unit text-amber-50 relative top-25 text-3xl">c</div>
                 </div>
             </div>
-            <div class="right flex flex-col w-[50%] h-full justify-around">
+            <div class="right flex flex-col w-[50%] h-screen justify-evenly pt-4 backdrop-blur-md bg-black/10 border border-white/20 shadow-[0px_8px_32px_0px_#1f268766] rounded-tl-3xl rounded-bl-3xl">
                 <div class="h-15 w-40 relative left-[25%]">
                     <p class=" text-3xl text-white font-sans">Monday</p>
                     <div class="daily-hour flex">30
@@ -77,10 +77,12 @@
                 </div>
             </div>
         </div>
+        <footer>
+            <div class="flex justify-center items-center w-full h-30">
+                <p class="font-bold text-white text-2xl">weather details by openmeteo</p>
+            </div>      
+        </footer>
     </div>
-    <footer>
-
-    </footer>
     <!-- <script src="script.js"></script> -->
 </body>
 

@@ -5,7 +5,7 @@
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev":"npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch"
+    "dev": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   "homepage": "https://github.com/himesh-hub/weather#readme",
   "dependencies": {
     "@tailwindcss/cli": "^4.3.0",
+    "gsap": "^3.15.0",
     "tailwindcss": "^4.3.0"
   }
 }
