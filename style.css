@@ -3,3 +3,8 @@
     background-image: url("assets/clear.jpg");
     /* background-size: cover; */
 }
+
+.hour{
+    margin-left: 4px;
+    overflow-y: hidden;
+}

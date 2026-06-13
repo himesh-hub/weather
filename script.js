@@ -5,6 +5,7 @@ let time = document.querySelector(".time");
 let dayNight = document.querySelector(".dayNight");
 let weatherCode = document.querySelector(".weather");
 let dailytemperature = document.querySelectorAll(".daily-hour");
+let hourlytemperature = document.querySelectorAll(".hourlys");
 
 currentData()
 dailyData()
@@ -18,25 +19,32 @@ async function currentData() {
     temp.innerText = currTemp;
     unit.innerText = data.current_units.temperature_2m;
     time.innerText = current.time;
-    if(current.is_day === 1){
+    if (current.is_day === 1) {
         dayNight.innerText = "Day";
-    }else{
+    } else {
         dayNight.innerText = "Night";
     }
     console.log(data);
     weather_code();
 }
 
-async function dailyData(){
+async function dailyData() {
     let response = await fetch(india);
     let data = await response.json();
     let daily = data.daily;
     let dailyTemp = daily.temperature_2m_max;
     dailyTemp.forEach((temperature, i) => {
-        if(dailytemperature[i]){
-        dailytemperature[i].innerText = temperature;
+        if (dailytemperature[i]) {
+            dailytemperature[i].innerText = temperature + "°C";
         }
     });
+    // dailytemperature.forEach(t => {
+    //     let unitD = document.createElement('div');
+    //     unitD.classList.add("unitD");
+    //     unitD.innerText = "°C";
+    //     t.append(unitD);
+    //     unitD.style.fontSize = "10px";
+    // })
     console.log(dailyTemp);
     hourlyData()
 }
@@ -54,29 +62,35 @@ async function hourlyData() {
     //     time.innerText = t;
     //     hourlytemperature.appendChild(time);
     // });
-    dailytemperature.forEach((temperature, i) => {
+    hourlytemperature.forEach((temperature, i) => {
         const hourChunk = hourlyTemp.slice(i * 24, (i * 24) + 24);
-        const timeChunk = updatedHourlyTime.slice(i * 24,(i * 24) + 24);
-        hourChunk.forEach(item => {
-        let hour = document.createElement('div');
-        hour.classList.add('hour');
-        hour.innerText = item;
-        temperature.append(hour);
-        });
-        timeChunk.forEach(item => {
-        let time = document.createElement('div');
-        time.classList.add('time-H');
-        time.innerText = item;
-        temperature.append(time);
+        const timeChunk = updatedHourlyTime.slice(i * 24, (i * 24) + 24);
+        hourChunk.forEach((item, j) => {
+            let hour = document.createElement('div');
+            hour.classList.add('hour');
+            hour.innerText = item;
+            temperature.append(hour);
+
+            let time = document.createElement('div');
+            time.classList.add('time-H');
+            time.innerText = timeChunk[j];
+            temperature.append(time);
         });
     });
     let hideTemp = document.querySelectorAll('.hour');
-    hideTemp.forEach(i =>{
+    hideTemp.forEach(i => {
         i.style.display = 'none';
     });
     let hideTime = document.querySelectorAll('.time-H');
-    hideTime.forEach(i =>{
+    hideTime.forEach(i => {
         i.style.display = 'none';
+    });
+    hourlytemperature.forEach(i => {
+        i.addEventListener('click', () => {
+            hideTemp.forEach(j => {
+                j.style.display = 'flex';
+            });
+        })
     })
 }
 
@@ -87,10 +101,10 @@ async function weather_code() {
     let weather = current.weather_code;
     console.log(weather);
     const weatherDescriptions = {
-        0:  "Clear",
-        1:  "Mainly clear",
-        2:  "Partly cloudy",
-        3:  "Overcast",
+        0: "Clear",
+        1: "Mainly clear",
+        2: "Partly cloudy",
+        3: "Overcast",
         45: "Fog",
         48: "Freezing fog",
         51: "Light drizzle",
