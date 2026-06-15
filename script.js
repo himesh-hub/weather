@@ -85,13 +85,31 @@ async function hourlyData() {
     hideTime.forEach(i => {
         i.style.display = 'none';
     });
-    hourlytemperature.forEach(i => {
-        i.addEventListener('click', () => {
-            hideTemp.forEach(j => {
-                j.style.display = 'flex';
+    function toggleVisibility() {
+        hourlytemperature.forEach(element => {
+            element.addEventListener('click', () => {
+                hourlytemperature.forEach(i => {
+                    const tailwindClasses = i.dataset.tailwind.split(' ');
+                    const hasTailwind = i.classList.contains(tailwindClasses[0]);
+                    if (hasTailwind){
+                        i.classList.remove(...tailwindClasses);
+                        i.classList.add('hData');
+                    }else{
+                        i.classList.add(...tailwindClasses);
+                        i.classList.remove('hData');
+                    }
+                    hideTemp.forEach(j => {
+                        if(j.style.display == 'none'){
+                            j.style.display = 'flex';
+                        } else{
+                            j.style.display = 'none';
+                        }
+                    });
+                });
             });
-        })
-    })
+        });
+    }
+    toggleVisibility()
 }
 
 async function weather_code() {
