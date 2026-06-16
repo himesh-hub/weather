@@ -6,6 +6,11 @@ let dayNight = document.querySelector(".dayNight");
 let weatherCode = document.querySelector(".weather");
 let dailytemperature = document.querySelectorAll(".daily-hour");
 let hourlytemperature = document.querySelectorAll(".hourlys");
+let btn = document.querySelectorAll('.btn');
+let ir = document.querySelectorAll('.hData');
+let isDown = false;
+let startX;
+let scrollLeft;
 
 currentData()
 dailyData()
@@ -68,7 +73,7 @@ async function hourlyData() {
         hourChunk.forEach((item, j) => {
             let hour = document.createElement('div');
             hour.classList.add('hour');
-            hour.innerText = item;
+            hour.innerText = item + '°C';
             temperature.append(hour);
 
             let time = document.createElement('div');
@@ -77,35 +82,40 @@ async function hourlyData() {
             temperature.append(time);
         });
     });
-    let hideTemp = document.querySelectorAll('.hour');
-    hideTemp.forEach(i => {
-        i.style.display = 'none';
-    });
     let hideTime = document.querySelectorAll('.time-H');
     hideTime.forEach(i => {
         i.style.display = 'none';
     });
     function toggleVisibility() {
-        hourlytemperature.forEach(element => {
-            element.addEventListener('click', () => {
-                hourlytemperature.forEach(i => {
-                    const tailwindClasses = i.dataset.tailwind.split(' ');
-                    const hasTailwind = i.classList.contains(tailwindClasses[0]);
-                    if (hasTailwind){
-                        i.classList.remove(...tailwindClasses);
-                        i.classList.add('hData');
-                    }else{
-                        i.classList.add(...tailwindClasses);
-                        i.classList.remove('hData');
-                    }
-                    hideTemp.forEach(j => {
-                        if(j.style.display == 'none'){
-                            j.style.display = 'flex';
-                        } else{
-                            j.style.display = 'none';
-                        }
-                    });
+        btn.forEach((element) => {
+            element.addEventListener('click', (e) => {
+                const clickedBtn = e.currentTarget;
+                const target = e.currentTarget.nextElementSibling;
+                const hourDisplay = target.querySelectorAll('.hour');
+                target.classList.toggle('hData');
+                hourDisplay.forEach(el => {
+                    el.classList.toggle('is-flex');
                 });
+
+                    target.addEventListener('mousedown', (e) => {
+                        isDown = true;
+                        target.classList.add('active');
+                        startX = e.pageX - target.offsetLeft;
+                        scrollLeft = target.scrollLeft;
+                    });
+                    target.addEventListener('mouseleave', () => {
+                        isDown = false;
+                    });
+                    target.addEventListener('mouseup', () => {
+                        isDown = false;
+                    });
+                    target.addEventListener('mousemove', (e) => {
+                        if (!isDown) return;
+                        e.preventDefault();
+                        const x = e.pageX - target.offsetLeft;
+                        const walk = (x - startX) * 2;
+                        target.scrollLeft = scrollLeft - walk;
+                    });
             });
         });
     }
