@@ -60,7 +60,7 @@ async function hourlyData() {
     let hourly = data.hourly;
     let hourlyTemp = hourly.temperature_2m;
     let hourlyTime = hourly.time;
-    updatedHourlyTime = hourlyTime.map(str => str.replaceAll('T', " "));
+    updatedHourlyTime = hourlyTime.map(str => str.slice(11));
     // hourlyTime.slice(0, 24).forEach(t => {
     //     let time = document.createElement('div');
     //     time.classList.add('time');
@@ -82,21 +82,20 @@ async function hourlyData() {
             temperature.append(time);
         });
     });
-    let hideTime = document.querySelectorAll('.time-H');
-    hideTime.forEach(i => {
-        i.style.display = 'none';
-    });
     function toggleVisibility() {
         btn.forEach((element) => {
             element.addEventListener('click', (e) => {
                 const clickedBtn = e.currentTarget;
                 const target = e.currentTarget.nextElementSibling;
                 const hourDisplay = target.querySelectorAll('.hour');
+                const timeDisplay = target.querySelectorAll('.time-H');
                 target.classList.toggle('hData');
                 hourDisplay.forEach(el => {
                     el.classList.toggle('is-flex');
                 });
-
+                timeDisplay.forEach(el => {
+                    el.classList.toggle('isFlex');
+                });
                     target.addEventListener('mousedown', (e) => {
                         isDown = true;
                         target.classList.add('active');
@@ -154,9 +153,9 @@ async function weather_code() {
         82: "Heavy showers",
         85: "Light snow showers",
         86: "Heavy snow showers",
-        95: "Thunderstorm",
-        96: "Thunderstorm with light hail",
-        99: "Thunderstorm with heavy hail",
+        95: "Thunder storm",
+        96: "light hail",
+        99: "heavy hail",
     };
     weatherCode.innerText = weatherDescriptions[weather] ?? "Unknown";
 }
