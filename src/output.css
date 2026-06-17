@@ -176,8 +176,20 @@
   }
 }
 @layer utilities {
+  .absolute {
+    position: absolute;
+  }
+  .fixed {
+    position: fixed;
+  }
   .relative {
     position: relative;
+  }
+  .sticky {
+    position: sticky;
+  }
+  .top-0 {
+    top: calc(var(--spacing) * 0);
   }
   .top-25 {
     top: calc(var(--spacing) * 25);
@@ -188,38 +200,68 @@
   .top-\[50\%\] {
     top: 50%;
   }
+  .bottom-0 {
+    bottom: calc(var(--spacing) * 0);
+  }
+  .bottom-1 {
+    bottom: calc(var(--spacing) * 1);
+  }
+  .bottom-10 {
+    bottom: calc(var(--spacing) * 10);
+  }
+  .bottom-\[\%\] {
+    bottom: %;
+  }
+  .bottom-\[0\%\] {
+    bottom: 0%;
+  }
+  .bottom-\[10\%\] {
+    bottom: 10%;
+  }
+  .bottom-\[30\%\] {
+    bottom: 30%;
+  }
+  .bottom-\[40\%\] {
+    bottom: 40%;
+  }
+  .bottom-\[43\%\] {
+    bottom: 43%;
+  }
+  .bottom-\[45\%\] {
+    bottom: 45%;
+  }
+  .bottom-\[47\%\] {
+    bottom: 47%;
+  }
+  .bottom-\[50\%\] {
+    bottom: 50%;
+  }
+  .bottom-\[80\%\] {
+    bottom: 80%;
+  }
+  .bottom-\[100\%\] {
+    bottom: 100%;
+  }
+  .left-0 {
+    left: calc(var(--spacing) * 0);
+  }
   .left-\[15\%\] {
     left: 15%;
   }
   .left-\[25\%\] {
     left: 25%;
   }
-  .container {
-    width: 100%;
-    @media (width >= 40rem) {
-      max-width: 40rem;
-    }
-    @media (width >= 48rem) {
-      max-width: 48rem;
-    }
-    @media (width >= 64rem) {
-      max-width: 64rem;
-    }
-    @media (width >= 80rem) {
-      max-width: 80rem;
-    }
-    @media (width >= 96rem) {
-      max-width: 96rem;
-    }
+  .z-1000 {
+    z-index: 1000;
+  }
+  .z-\[1000\] {
+    z-index: 1000;
   }
   .m-5 {
     margin: calc(var(--spacing) * 5);
   }
   .mr-1 {
     margin-right: calc(var(--spacing) * 1);
-  }
-  .block {
-    display: block;
   }
   .flex {
     display: flex;
@@ -268,9 +310,6 @@
   }
   .flex-col {
     flex-direction: column;
-  }
-  .flex-wrap {
-    flex-wrap: wrap;
   }
   .items-baseline {
     align-items: baseline;
