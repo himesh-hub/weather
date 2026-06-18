@@ -4,6 +4,12 @@
     /* background-size: cover; */
 }
 
+.nav.scrolled{
+    width: 80%;
+    border-radius: 8px;
+    top: 10px;
+}
+
 .hour{
     display: none;
 }

@@ -15,6 +15,15 @@ let scrollLeft;
 currentData()
 dailyData()
 
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.nav');
+    if(window.scrollY > 50){
+        navbar.classList.add('scrolled');
+    } else{
+        navbar.classList.remove('scrolled')
+    }
+})
+
 async function currentData() {
     let response = await fetch(india);
     let data = await response.json();
