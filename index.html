@@ -9,10 +9,9 @@
     <link rel="stylesheet" href="src/output.css">
 </head>
 
-<body class="overflow-x-hidden">
-
+<body>
     <div class="hi bg-cover bg-center bg-no-repeat min-h-screen w-full overflow-hidden">
-        <header class="h-14 w-full flex justify-between items-center">
+        <header class="nav h-14 w-full fixed z-1000 top-0 left-[50%] -translate-x-1/2 transition-all duration-300 ease-in-out flex justify-between items-center">
             <p class="font-bold m-5 text-white underline">DAILYweather</p>
             <ul class="flex w-3/12 justify-around text-white">
                 <li class="border p-2 rounded-2xl backdrop-blur-md border-white/30 shadow-[0px_4px_32px_0px_#1f268766]">Home</li>
@@ -20,7 +19,7 @@
                 <li class="border p-2 rounded-2xl backdrop-blur-md border-white/30 shadow-[0px_4px_32px_0px_#1f268766]">About</li>
             </ul>
         </header>
-        <div class="h-full w-full flex">
+        <section class="h-full w-full flex items-center pt-12 pb-12">
             <div class="left w-[50%] h-screen ">
                 <div class="h-50 w-80 relative left-[15%] top-[10%] bg-white/15 backdrop-blur-md border border-white/20 shadow-[0px_8px_32px_0px_#1f268766] rounded-2xl p-6">
                     <div class="weather text-amber-50 font-bold text-5xl ">Cloudy</div>
@@ -32,7 +31,7 @@
                     <div class="unit text-amber-50 relative top-25 text-3xl">c</div>
                 </div>
             </div>
-            <div class="right flex flex-col w-[50%] h-screen justify-evenly pt-4 backdrop-blur-md bg-black/10 border border-white/20 shadow-[0px_8px_32px_0px_#1f268766] rounded-tl-3xl rounded-bl-3xl">
+            <div class="right flex flex-col flex-wrap w-[50%] h-full justify-evenly pt-4 backdrop-blur-md bg-black/10 border border-white/20 shadow-[0px_8px_32px_0px_#1f268766] rounded-tl-3xl rounded-bl-3xl">
                 <div class="h-28 w-40 relative left-[25%]">
                     <p class=" text-3xl text-white font-sans">Monday</p>
                     <div class="daily-hour flex text-white items-baseline">30</div>
@@ -83,7 +82,7 @@
                     <div class="hourlys text-white"></div>
                 </div>
             </div>
-        </div>
+        </section>
         <footer>
             <div class="flex justify-center items-center w-full h-30">
                 <p class="font-bold text-white text-2xl">weather details by openmeteo</p>
