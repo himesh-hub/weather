@@ -4,10 +4,16 @@
     /* background-size: cover; */
 }
 
+.nav{
+    transition: all 1s ease;
+}
+
 .nav.scrolled{
-    width: 80%;
+    width: 90%;
+    background-color: rgba(0,0,0,0.4);
     border-radius: 8px;
-    top: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .hour{
