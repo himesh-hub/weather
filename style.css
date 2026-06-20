@@ -5,15 +5,14 @@
 }
 
 .nav{
-    transition: all 1s ease;
+    transition: all 1s ease 0s;
 }
 
 .nav.scrolled{
-    width: 90%;
+    width: 80%;
     background-color: rgba(0,0,0,0.4);
-    border-radius: 8px;
-    display: flex;
-    justify-content: space-between;
+    border-radius: 16px;
+    transform: translateX(12%) translateY(20%);
 }
 
 .hour{
