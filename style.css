@@ -5,13 +5,14 @@
 }
 
 .nav{
-    transition: all 1s ease 0s;
+    transition: all 1s ease;
 }
 
 .nav.scrolled{
     width: 80%;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(255,255,255,0.2);
     border-radius: 16px;
+    backdrop-filter: blur(16px);
     transform: translateX(12%) translateY(20%);
 }
 
