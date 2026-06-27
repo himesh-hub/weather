@@ -7,6 +7,7 @@ let weatherCode = document.querySelector(".weather");
 let dailytemperature = document.querySelectorAll(".daily-hour");
 let hourlytemperature = document.querySelectorAll(".hourlys");
 let btn = document.querySelectorAll('.btn');
+let wall = document.querySelector('.wall');
 let ir = document.querySelectorAll('.hData');
 let isDown = false;
 let startX;
@@ -135,7 +136,6 @@ async function weather_code() {
     let data = await response.json();
     let current = data.current;
     let weather = current.weather_code;
-    console.log(weather);
     const weatherDescriptions = {
         0: "Clear",
         1: "Mainly clear",
@@ -167,4 +167,38 @@ async function weather_code() {
         99: "heavy hail",
     };
     weatherCode.innerText = weatherDescriptions[weather] ?? "Unknown";
+    function wallpaper(){
+        const codes = weather;
+        let current = data.current;
+        let isDay = current.is_day;
+        console.log(isDay);
+        if(codes >= 0 && codes < 3){
+            if(isDay === 1){
+                wall.classList.add('clear');
+            }else{
+                wall.classList.add('night-clear');
+            }
+        }else if(codes >= 45 && codes <= 48) {
+            if(isDay === 1){
+                wall.classList.add('fog');
+            }else{
+                wall.classList.add('night-fog');
+            }
+        }else if(codes >= 51 && codes <= 67){
+            if(isDay === 1){
+                wall.classList.add('rain');
+            }else{
+                wall.classList.add('night-rain');
+            }
+        }else if(codes >= 71 && codes <= 86) {
+            if(isDay === 1){
+                wall.classList.add('snow');
+            }else{
+                wall.classList.add('night-snow');
+            }
+        }else{
+            wall.classList.add('thunderstorm');
+        }
+    }
+    wallpaper();
 }
