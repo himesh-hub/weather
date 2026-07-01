@@ -171,7 +171,6 @@ async function weather_code() {
         const codes = weather;
         let current = data.current;
         let isDay = current.is_day;
-        console.log(isDay);
         if(codes >= 0 && codes < 3){
             if(isDay === 1){
                 wall.classList.add('clear');

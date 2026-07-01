@@ -56,7 +56,7 @@
     cursor: grabbing;
 }
 
-@media only screen and (min-width: 640px) {
+@media only screen and (max-width: 1600px) {
     .hData{
         width: 100%;
     }
